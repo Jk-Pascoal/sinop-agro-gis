@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uso do Solo — Sinop-MT 2024 | MapBiomas</title>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d0d0d;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+  }
+  .header h1 span { color: #4ade80; }
+  .header p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 6px;
+    font-weight: 400;
+  }
+  .badge {
+    display: inline-block;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  .chart-container {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 8px;
+  }
+  .stat-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: #444; }
+  .stat-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: #888;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .stat-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 4px;
+    display: block;
+  }
+  .stat-pct {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  .source {
+    margin-top: 20px;
+    font-size: 0.72rem;
+    color: #444;
+    text-align: center;
+  }
+  .source a { color: #555; text-decoration: none; }
+  .source a:hover { color: #888; }
+
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 14px 22px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .author:hover { border-color: #4ade80; background: #141414; }
+  .author img {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 2px solid #333;
+  }
+  .author-info { text-align: left; }
+  .author-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    display: block;
+  }
+  .author-handle {
+    font-size: 0.75rem;
+    color: #4ade80;
+  }
+  .author-tag {
+    font-size: 0.7rem;
+    color: #555;
+    margin-left: auto;
+    padding: 4px 10px;
+    border: 1px solid #333;
+    border-radius: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌿 Uso e Cobertura do Solo — <span>Sinop, MT</span></h1>
+  <p>Distribuição da área municipal por classe de uso do solo · Ano base 2024</p>
+  <span class="badge">MapBiomas Collection 10.1 · Resolução 30m · IBGE 2022</span>
+</div>
+
+<div class="chart-container" id="donut-chart"></div>
+
+<div class="stats-grid" id="stats-grid"></div>
+
+<div class="source">
+  Fonte: <a href="https://mapbiomas.org" target="_blank">MapBiomas Collection 10.1</a> · 
+  Limites: <a href="https://ibge.gov.br" target="_blank">IBGE Malha Municipal 2022</a> · 
+  Projeto: <a href="https://github.com/Jk-Pascoal/sinop-agro-gis" target="_blank">sinop-agro-gis</a>
+</div>
+
+<a class="author" href="https://github.com/Jk-Pascoal" target="_blank">
+  <img src="https://github.com/Jk-Pascoal.png" alt="Jakson Pascoal" 
+       onerror="this.src='https://avatars.githubusercontent.com/u/Jk-Pascoal'">
+  <div class="author-info">
+    <span class="author-name">Jakson Pascoal</span>
+    <span class="author-handle">@Jk-Pascoal · github.com/Jk-Pascoal</span>
+  </div>
+  <span class="author-tag">Data Science · GIS · Sinop-MT</span>
+</a>
+
+<script>
+// ─── DADOS ───────────────────────────────────────────────────────────────────
+const totalArea = 399085.86; // ha total
+
+const inner = [
+  { label: 'Floresta',        value: 144652.29, color: '#1a7a3c' },
+  { label: 'Herb./Arbustiva', value: 1337.57,   color: '#45c2a5' },
+  { label: 'Agropecuária',    value: 229136.56, color: '#E974ED' },
+  { label: 'Área não veg.',   value: 10573.40,  color: '#d4271e' },
+  { label: 'Água',            value: 13386.03,  color: '#2532E4' },
+];
+
+const outer = [
+  // Floresta
+  { label: 'Floresta Nativa',    value: 129179.01, color: '#1F8D49', parent: 'Floresta' },
+  { label: 'Floresta Aluvial',   value: 15470.66,  color: '#519799', parent: 'Floresta' },
+  { label: 'Savana Arbórea',     value: 2.63,       color: '#7DC975', parent: 'Floresta' },
+  // Herb.
+  { label: 'Campo Natural',      value: 31.08,      color: '#d6bc74', parent: 'Herb./Arbustiva' },
+  { label: 'Área Úmida',        value: 1306.50,    color: '#45C2A5', parent: 'Herb./Arbustiva' },
+  // Agropecuária
+  { label: 'Soja',               value: 169851.83,  color: '#E974ED', parent: 'Agropecuária' },
+  { label: 'Algodão',            value: 122.93,     color: '#c27ba0', parent: 'Agropecuária' },
+  { label: 'Outras Lavouras',    value: 28619.36,   color: '#e8c3e8', parent: 'Agropecuária' },
+  { label: 'Plantio Florestal',  value: 410.34,     color: '#7a5c58', parent: 'Agropecuária' },
+  { label: 'Pastagem',           value: 30132.11,   color: '#BBB35A', parent: 'Agropecuária' },
+  // Não veg.
+  { label: 'Área Urbana',        value: 8938.24,    color: '#DB4040', parent: 'Área não veg.' },
+  { label: 'Outras Áreas',       value: 1635.16,    color: '#b0a090', parent: 'Área não veg.' },
+  // Água
+  { label: 'Rios e Lagos',       value: 13386.03,   color: '#2532E4', parent: 'Água' },
+];
+
+// ─── FORMATADORES ─────────────────────────────────────────────────────────────
+const fmtHa  = v => v >= 1000 ? `${(v/1000).toFixed(1)}k ha` : `${v.toFixed(0)} ha`;
+const fmtPct = v => `${((v/totalArea)*100).toFixed(1)}%`;
+const fmtFull= v => `${v.toLocaleString('pt-BR', {maximumFractionDigits:0})} ha`;
+
+// ─── PLOTLY ──────────────────────────────────────────────────────────────────
+const innerTrace = {
+  type: 'pie',
+  hole: 0.55,
+  values: inner.map(d => d.value),
+  labels: inner.map(d => d.label),
+  marker: { colors: inner.map(d => d.color), line: { color: '#0d0d0d', width: 3 } },
+  textinfo: 'none',
+  hovertemplate: '<b>%{label}</b><br>%{value:,.0f} ha<br>%{percent}<extra></extra>',
+  domain: { x: [0.15, 0.85], y: [0.02, 0.98] },
+  sort: false,
+  direction: 'clockwise',
+};
+
+const outerTrace = {
+  type: 'pie',
+  hole: 0.72,
+  values: outer.map(d => d.value),
+  labels: outer.map(d => d.label),
+  marker: { colors: outer.map(d => d.color), line: { color: '#0d0d0d', width: 2 } },
+  textinfo: 'none',
+  hovertemplate: '<b>%{label}</b><br>%{value:,.0f} ha<br>%{percent}<extra></extra>',
+  domain: { x: [0.05, 0.95], y: [0, 1] },
+  sort: false,
+  direction: 'clockwise',
+};
+
+const layout = {
+  paper_bgcolor: '#0d0d0d',
+  plot_bgcolor:  '#0d0d0d',
+  showlegend: true,
+  legend: {
+    font: { color: '#aaa', size: 11, family: 'Inter' },
+    bgcolor: 'rgba(0,0,0,0)',
+    x: 1.01, y: 0.5,
+    xanchor: 'left',
+    yanchor: 'middle',
+    itemclick: 'toggleothers',
+  },
+  annotations: [{
+    text: `<b style="color:#fff;font-size:20px">${(totalArea/1000).toFixed(0)}k ha</b><br><span style="color:#666;font-size:11px">ÁREA TOTAL</span>`,
+    x: 0.5, y: 0.5,
+    showarrow: false,
+    font: { size: 13, color: '#888', family: 'Inter' },
+    xanchor: 'center', yanchor: 'middle',
+    align: 'center',
+  }],
+  margin: { t: 20, b: 20, l: 20, r: 180 },
+  height: 480,
+};
+
+Plotly.newPlot('donut-chart', [innerTrace, outerTrace], layout, {
+  responsive: true,
+  displayModeBar: false,
+});
+
+// ─── CARDS DE STATS ──────────────────────────────────────────────────────────
+const statsEl = document.getElementById('stats-grid');
+inner.forEach(d => {
+  statsEl.innerHTML += `
+    <div class="stat-card">
+      <div class="stat-label">
+        <span class="stat-dot" style="background:${d.color}"></span>${d.label}
+      </div>
+      <span class="stat-value">${fmtHa(d.value)}</span>
+      <div class="stat-pct">${fmtPct(d.value)}</div>
+    </div>`;
+});
+</script>
+</body>
+</html>
