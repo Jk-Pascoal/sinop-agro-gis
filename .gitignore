@@ -1,0 +1,39 @@
+# QGIS
+*.qgs~
+*.qgz~
+*.qgd
+*.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv/
+env/
+venv/
+*.egg-info/
+dist/
+build/
+.ipynb_checkpoints/
+
+# Dados pesados (rasters e shapefiles grandes - usar Git LFS ou ignorar)
+*.tif
+*.tiff
+# Descomente abaixo se quiser ignorar shapefiles também:
+# *.shp
+# *.dbf
+# *.shx
+# *.prj
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+
+# Jupyter
+.jupyter/
