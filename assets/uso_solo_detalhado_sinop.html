@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uso do Solo — Sinop-MT · Detalhado | MapBiomas</title>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0a0f;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 24px 30px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+      max-width: 860px;
+      width: 100%;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4ade80;
+      margin-bottom: 10px;
+    }
+
+    .header h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+    }
+
+    .header h1 em {
+      font-style: normal;
+      color: #4ade80;
+    }
+
+    .header p {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 8px;
+    }
+
+    /* ── KPI ROW ── */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      width: 100%;
+      max-width: 860px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: linear-gradient(135deg, #111118 0%, #0e0e14 100%);
+      border: 1px solid #1e1e2e;
+      border-radius: 14px;
+      padding: 18px 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: 14px 14px 0 0;
+    }
+
+    .kpi-card.green::before  { background: #1a7a3c; }
+    .kpi-card.purple::before { background: #a855f7; }
+    .kpi-card.blue::before   { background: #3b82f6; }
+    .kpi-card.red::before    { background: #ef4444; }
+
+    .kpi-card:hover { border-color: #333; }
+
+    .kpi-icon { font-size: 1.3rem; margin-bottom: 6px; }
+    .kpi-label { font-size: 0.65rem; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+    .kpi-value { font-size: 1.5rem; font-weight: 800; color: #fff; margin-top: 4px; line-height: 1; }
+    .kpi-sub   { font-size: 0.75rem; color: #555; margin-top: 4px; }
+
+    /* ── CHART CONTAINER ── */
+    .chart-wrap {
+      width: 100%;
+      max-width: 860px;
+      background: #0e0e14;
+      border: 1px solid #1a1a26;
+      border-radius: 16px;
+      padding: 8px 0;
+      margin-bottom: 18px;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #444;
+      max-width: 860px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 6px;
+      padding-top: 16px;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .footer-source {
+      font-size: 0.68rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .footer-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .footer-author:hover { opacity: 0.8; }
+
+    .footer-author img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #222;
+    }
+
+    .author-name  { font-size: 0.8rem; font-weight: 600; color: #ccc; display: block; }
+    .author-sub   { font-size: 0.68rem; color: #4ade80; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">🛰️ MapBiomas Collection 10.1 · Resolução 30m</div>
+    <h1>399 mil hectares dissecados —<br><em>como Sinop usa seu território</em></h1>
+    <p>Classificação completa por classe de uso e cobertura do solo · Ano base 2024 · Sinop, Mato Grosso</p>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-row">
+    <div class="kpi-card green">
+      <div class="kpi-icon">🌿</div>
+      <div class="kpi-label">Floresta</div>
+      <div class="kpi-value">36,2%</div>
+      <div class="kpi-sub">144,6 mil ha</div>
+    </div>
+    <div class="kpi-card purple">
+      <div class="kpi-icon">🌾</div>
+      <div class="kpi-label">Agropecuária</div>
+      <div class="kpi-value">57,4%</div>
+      <div class="kpi-sub">229,1 mil ha</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-icon">🫘</div>
+      <div class="kpi-label">Só de Soja</div>
+      <div class="kpi-value">42,6%</div>
+      <div class="kpi-sub">169,9 mil ha</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-icon">🏙️</div>
+      <div class="kpi-label">Área Urbana</div>
+      <div class="kpi-value">2,2%</div>
+      <div class="kpi-sub">8,9 mil ha</div>
+    </div>
+  </div>
+
+  <!-- SECTION LABEL -->
+  <div class="section-label">▸ Ranking por área (ha) — todas as classes</div>
+
+  <!-- CHART -->
+  <div class="chart-wrap">
+    <div id="bar-chart"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-source">
+      Fonte: MapBiomas Collection 10.1 &nbsp;·&nbsp; Limites: IBGE Malha Municipal 2022<br>
+      Projeto: <strong>sinop-agro-gis</strong> &nbsp;·&nbsp; github.com/Jk-Pascoal/sinop-agro-gis
+    </div>
+    <a class="footer-author" href="https://github.com/Jk-Pascoal" target="_blank">
+      <img src="https://github.com/Jk-Pascoal.png" alt="Jakson Pascoal"
+           onerror="this.src='https://ui-avatars.com/api/?name=JP&background=1a7a3c&color=fff&size=64'">
+      <div>
+        <span class="author-name">Jakson Pascoal</span>
+        <span class="author-sub">@Jk-Pascoal · Data Science & GIS</span>
+      </div>
+    </a>
+  </div>
+
+  <script>
+    // ── Dados das 13 classes (ordenadas por valor desc) ────────────────────────
+    const classes = [
+      { label: 'Soja',                value: 169851.83, color: '#c084fc', group: 'Agropecuária' },
+      { label: 'Floresta Nativa',     value: 129179.01, color: '#16a34a', group: 'Floresta' },
+      { label: 'Pastagem',            value:  30132.11, color: '#ca8a04', group: 'Agropecuária' },
+      { label: 'Outras Lavouras',     value:  28619.36, color: '#e879f9', group: 'Agropecuária' },
+      { label: 'Floresta Aluvial',    value:  15470.66, color: '#0d9488', group: 'Floresta' },
+      { label: 'Rios e Lagos',        value:  13386.03, color: '#3b82f6', group: 'Água' },
+      { label: 'Área Urbana',         value:   8938.24, color: '#ef4444', group: 'Área não veg.' },
+      { label: 'Área Úmida',          value:   1306.50, color: '#2dd4bf', group: 'Herb./Arbustiva' },
+      { label: 'Outras Áreas',        value:   1635.16, color: '#a8a29e', group: 'Área não veg.' },
+      { label: 'Plantio Florestal',   value:    410.34, color: '#78716c', group: 'Agropecuária' },
+      { label: 'Algodão',             value:    122.93, color: '#d8b4fe', group: 'Agropecuária' },
+      { label: 'Campo Natural',       value:     31.08, color: '#fde68a', group: 'Herb./Arbustiva' },
+      { label: 'Savana Arbórea',      value:      2.63, color: '#4ade80', group: 'Floresta' },
+    ].sort((a, b) => b.value - a.value);
+
+    const TOTAL = 399085.86;
+    const fmt = v => v >= 1000 ? `${(v/1000).toFixed(1)}k ha` : `${v.toFixed(0)} ha`;
+    const pct = v => `${(v/TOTAL*100).toFixed(1)}%`;
+
+    const trace = {
+      type: 'bar',
+      orientation: 'h',
+      y: classes.map(d => d.label),
+      x: classes.map(d => d.value),
+      marker: {
+        color: classes.map(d => d.color),
+        line: { color: '#0a0a0f', width: 1.5 },
+      },
+      text: classes.map(d => `  <b style="color:#fff">${fmt(d.value)}</b>  <span style="color:#666">${pct(d.value)}</span>`),
+      textposition: 'outside',
+      textfont: { size: 12, family: 'Inter', color: '#aaa' },
+      hovertemplate: '<b>%{y}</b><br>%{x:,.0f} ha<br>' +
+                     classes.map(d => `${pct(d.value)}`).join('') +
+                     '<extra></extra>',
+      cliponaxis: false,
+    };
+
+    // Recalcular texto por item
+    trace.text = classes.map(d =>
+      `  <b style="color:#eee">${fmt(d.value)}</b>   <span style="color:#555">${pct(d.value)}</span>`
+    );
+
+    const layout = {
+      paper_bgcolor: 'rgba(0,0,0,0)',
+      plot_bgcolor:  'rgba(0,0,0,0)',
+      margin: { t: 10, b: 30, l: 145, r: 160 },
+      height: 480,
+      xaxis: {
+        showgrid: true,
+        gridcolor: '#1a1a26',
+        gridwidth: 1,
+        zeroline: false,
+        showticklabels: false,
+        showline: false,
+        range: [0, 220000],
+      },
+      yaxis: {
+        autorange: 'reversed',
+        tickfont: { size: 12.5, color: '#bbb', family: 'Inter' },
+        showgrid: false,
+        showline: false,
+        ticksuffix: '  ',
+      },
+      font: { family: 'Inter', color: '#aaa' },
+      hoverlabel: {
+        bgcolor: '#111',
+        bordercolor: '#333',
+        font: { size: 13, family: 'Inter', color: '#fff' },
+      },
+      bargap: 0.28,
+    };
+
+    Plotly.newPlot('bar-chart', [trace], layout, {
+      responsive: true,
+      displayModeBar: false,
+    });
+  </script>
+
+</body>
+</html>
