@@ -112,11 +112,17 @@ jupyter notebook notebooks/
 
 ---
 
-### Mapa 2 — Uso do Solo (MapBiomas 2024)
-> *Em desenvolvimento*
+### Mapa 2 — Uso do Solo por Classe (MapBiomas 2024)
+> Distribuição completa das 13 classes de uso e cobertura do solo no município de Sinop-MT. A **soja** domina com 169.851 ha (42,6%), seguida pela **Floresta Nativa** com 129.179 ha (32,4%). Dados: MapBiomas Collection 10.1, resolução 30m.
+
+![Uso do Solo — Barras por Classe](maps/exportados/03_uso_solo_barras_sinop.png)
+
+*Fonte: MapBiomas Collection 10.1 · IBGE Malha Municipal 2022*
+
+---
 
 ### Mapa 3 — Expansão Agrícola 2000–2024
-> *Em desenvolvimento*
+> *Em desenvolvimento — análise temporal da fronteira agrícola*
 
 ### Mapa 4 — Malha Viária e Pontos Logísticos
 > *Em desenvolvimento*
@@ -126,9 +132,12 @@ jupyter notebook notebooks/
 ## 🎯 Objetivos de Aprendizado
 
 - [x] Configurar projeto QGIS com sistema de coordenadas SIRGAS 2000
-- [ ] Importar e reprojetar shapefiles do IBGE
-- [ ] Classificar uso do solo com dados MapBiomas
-- [ ] Criar layout de mapa profissional no QGIS
+- [x] Importar shapefiles do IBGE (MT_Municipios_2022)
+- [x] Exportar mapa de limite municipal com basemap de satélite
+- [x] Classificar uso do solo com dados MapBiomas (Collection 10.1)
+- [x] Criar visualizações Python com Plotly (donut, barras, treemap, KPIs)
+- [ ] Criar layout de mapa profissional no QGIS (Print Composer)
+- [ ] Análise temporal da expansão agrícola 2000–2024
 - [ ] Integrar QGIS com Python via PyQGIS ou GeoPandas
 - [ ] Publicar mapa interativo online com Folium
 
