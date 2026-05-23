@@ -34,6 +34,8 @@ sinop-agro-gis/
 ├── 📁 maps/
 │   └── exportados/             # Mapas exportados do QGIS (PNG/PDF)
 │
+├── index.html                  # Página do mapa interativo (GitHub Pages)
+│
 ├── 📁 notebooks/
 │   ├── 01_processamento.ipynb       # Carregamento e limpeza dos dados
 │   ├── 02_analise_espacial.ipynb    # Análise com GeoPandas
@@ -172,7 +174,7 @@ jupyter notebook notebooks/
 - [ ] Criar layout de mapa profissional no QGIS (Print Composer)
 - [x] Análise temporal da expansão agrícola 2000–2024
 - [x] Integrar QGIS com Python via PyQGIS ou GeoPandas
-- [ ] Publicar mapa interativo online com Folium
+- [x] Publicar mapa interativo online com Folium
 
 ---
 
