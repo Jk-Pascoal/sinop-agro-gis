@@ -40,7 +40,8 @@ sinop-agro-gis/
 │   ├── 03_visualizacao.ipynb        # Mapas interativos com Folium
 │   ├── 04_dados_reais_mapbiomas.ipynb # Análise MapBiomas Collection 10.1
 │   ├── 05_producao_ibge_sidra.ipynb # Produção agrícola PAM 2010–2023
-│   └── 06_analise_temporal.ipynb    # Análise temporal integrada (2000–2024)
+│   ├── 06_analise_temporal.ipynb    # Análise temporal integrada (2000–2024)
+│   └── 07_logistica_infraestrutura.ipynb # Análise da malha viária e logística
 │
 ├── 📁 qgis_project/            # Arquivo .qgz do projeto QGIS
 │
@@ -144,7 +145,19 @@ jupyter notebook notebooks/
 ---
 
 ### Análise 4 — Malha Viária e Pontos Logísticos
-> *Em desenvolvimento*
+> Mapeamento espacial completo da malha rodoviária municipal de Sinop-MT, destacando o fluxo de escoamento e as principais vias de conexão agrícola.
+
+- **Área Municipal:** 3.990,86 km² (399.085 ha)
+- **Extensão Total da Malha Viária:** **1.842,15 km** de estradas
+- **Densidade Viária:** **0,462 km/km²** (km de vias por km² de área)
+- **Eixo Principal (BR-163):** **63,85 km** de extensão cruzando o município de sul a norte.
+- **Distribuição de Vias por Classe (OSM fclass):**
+  - *Estradas Rurais / Vias de Terra (Track):* **1.228,15 km (66,7%)** — essenciais para o transporte interno das lavouras até a rodovia.
+  - *Vias Urbanas Residenciais (Residential):* **348,65 km (18,9%)**
+  - *Vias de Conexão Estaduais e Locais (Secondary/Tertiary):* **85,50 km (4,6%)**
+  - *Rodovia Federal de Escoamento (Trunk/Primary):* **72,82 km (4,0%)** (BR-163)
+
+![Malha Viária de Sinop-MT](maps/exportados/15_malha_viaria_sinop.png)
 
 ---
 
@@ -158,7 +171,7 @@ jupyter notebook notebooks/
 - [x] Analisar produção agrícola histórica com dados IBGE SIDRA (PAM 2010–2023)
 - [ ] Criar layout de mapa profissional no QGIS (Print Composer)
 - [x] Análise temporal da expansão agrícola 2000–2024
-- [ ] Integrar QGIS com Python via PyQGIS ou GeoPandas
+- [x] Integrar QGIS com Python via PyQGIS ou GeoPandas
 - [ ] Publicar mapa interativo online com Folium
 
 ---
