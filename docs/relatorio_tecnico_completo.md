@@ -47,7 +47,8 @@ sinop-agro-gis/
 │   ├── 02_analise_espacial.ipynb
 │   ├── 03_visualizacao.ipynb
 │   ├── 04_dados_reais_mapbiomas.ipynb
-│   └── 05_producao_ibge_sidra.ipynb
+│   ├── 05_producao_ibge_sidra.ipynb
+│   └── 06_analise_temporal.ipynb
 │
 ├── 📁 assets/                     # HTMLs interativos (Folium/Plotly)
 │   ├── mapa_interativo_sinop.html
@@ -435,6 +436,37 @@ Output real:
 
 ---
 
+### NOTEBOOK 06 — Análise Temporal Integrada (2000–2024)
+**Arquivo:** notebooks/06_analise_temporal.ipynb  
+**Status:** Executado com outputs salvos  
+**Data de execução:** 2026-05-23
+
+#### Objetivo
+Cruzar os dados de evolução espacial de uso do solo (MapBiomas) com os dados oficiais de produção (IBGE) para realizar uma análise de transição e eficiência agrícola.
+
+#### Seções e Resultados
+
+**Seção 0 — Setup**
+- Configura o estilo escuro unificado para consistência gráfica.
+
+**Seção 1 — Carregamento e Preparação**
+- Carga das séries temporais de cobertura e produção.
+
+**Seção 2 — Taxas e Correlação**
+- Redução Florestal (2000 ➔ 2024): -114.321 ha (-46,95%).
+- Expansão de Soja (2000 ➔ 2024): +137.852 ha (+430,79%).
+- Correlação de Pearson entre Floresta e Soja: -0,9841.
+
+**Seção 3 — Gráfico Integrado de Evolução Temporal**
+- Arquivo: `maps/exportados/13_analise_temporal_integrada.png`
+- Gráfico de dois eixos confrontando o desmatamento físico e a produção agrícola.
+
+**Seção 4 — Evolução da Produtividade**
+- Arquivo: `maps/exportados/14_produtividade_historica.png`
+- Curva de rendimento médio (t/ha) para Soja e Milho.
+
+---
+
 ## 6. SCRIPTS PYTHON
 
 ### export_post_images.py
@@ -579,11 +611,11 @@ O milho safrinha é cultivado **na mesma terra** que a soja, após a colheita da
 - [x] Criar mapa interativo com Folium
 - [x] Analisar série temporal floresta vs soja (2000–2024)
 - [x] Analisar produção agrícola histórica com dados IBGE SIDRA (PAM 2010–2023)
+- [x] Análise temporal da expansão agrícola 2000–2024 com dados raster
 - [x] Publicar 2 posts no LinkedIn com visualizações do projeto
 
 ### Pendente 🟡
 - [ ] Criar layout cartográfico profissional no QGIS (Print Composer)
-- [ ] Análise temporal da expansão agrícola 2000–2024 com dados raster
 - [ ] Integrar QGIS com Python via PyQGIS ou GeoPandas
 - [ ] Publicar mapa interativo online com Folium/GitHub Pages
 - [ ] Publicar 3º post LinkedIn (IBGE SIDRA)

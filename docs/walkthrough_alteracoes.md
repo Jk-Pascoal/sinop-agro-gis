@@ -26,7 +26,7 @@ Este documento resume as implementações realizadas para dinamizar os dados e p
 
 ---
 
-## 🔬 Verificação e Validação
+## 🔬 Verificação e Validação (Fase 1)
 
 - **Notebook de Produção**: Pronto para uso. A leitura do CSV agora carrega e plota os gráficos perfeitamente com os dados originais.
 - **Download e Processamento Logístico**: As tarefas de download e processamento de infraestrutura logística foram **concluídas com sucesso** e validadas!
@@ -35,4 +35,27 @@ Este documento resume as implementações realizadas para dinamizar os dados e p
   - `sinop_ferrovias.shp`: Criado (vazio/100 bytes, uma vez que não há ferrovias cruzando o território municipal de Sinop).
   - `sinop_silos.shp`: Não gerado, pois nenhum ponto no dataset público de POIs do Geofabrik atendeu aos filtros semânticos de armazenagem/silos em Sinop.
 - **Limpeza de Espaço**: O ZIP de 456 MB e todos os shapefiles brutos extraídos regionalmente (cerca de 2 GB) foram limpos com sucesso, mantendo o tamanho do projeto leve e dentro das diretrizes de armazenamento do notebook.
+
+---
+
+## 🛠️ Modificações Realizadas (Fase 2)
+
+### 1. 📂 Notebook de Análise Temporal Integrada
+*   **[06_analise_temporal.ipynb](file:///C:/Users/Administrador/Documents/Projeto-SINOP/notebooks/06_analise_temporal.ipynb)**: Criado notebook para correlacionar a evolução física (MapBiomas) e estatística (IBGE PAM).
+*   **[generate_notebook_06.py](file:///C:/Users/Administrador/Documents/Projeto-SINOP/scripts/generate_notebook_06.py)**: Script gerador programático usando nbformat.
+
+### 2. 📈 Geração e Exportação de Novos Gráficos
+*   `13_analise_temporal_integrada.png`: Gráfico de dois eixos confrontando o desmatamento físico e o aumento da produção de soja.
+*   `14_produtividade_historica.png`: Gráfico detalhando a produtividade de soja e milho (t/ha) entre 2010 e 2023.
+
+---
+
+## 🔬 Verificação e Validação (Fase 2)
+
+- **Evolução Temporal 2000–2024 (MapBiomas)**:
+  - Perda de Floresta: -114.321 ha (-46,95%).
+  - Expansão de Soja: +137.852 ha (+430,79%).
+  - Correlação: Pearson de **-0,9841** comprovando transição direta.
+- **Crescimento de Produtividade (IBGE)**:
+  - Soja: ~3.17 t/ha e Milho: ~7.0 t/ha, indicando intensificação agrícola ao invés de desmatamento contínuo.
 
