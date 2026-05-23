@@ -44,7 +44,7 @@ DOWNLOADS = [
     },
     {
         "name": "Malha Viária — Centro-Oeste (OpenStreetMap via Geofabrik)",
-        "url": "https://download.geofabrik.de/south-america/brazil/centro-oeste-latest.shp.zip",
+        "url": "https://download.geofabrik.de/south-america/brazil/centro-oeste-latest-free.shp.zip",
         "target_dir": DATA_DIR / "malha_viaria",
         "extract": True,
     },

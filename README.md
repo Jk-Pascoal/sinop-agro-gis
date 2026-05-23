@@ -35,9 +35,12 @@ sinop-agro-gis/
 │   └── exportados/             # Mapas exportados do QGIS (PNG/PDF)
 │
 ├── 📁 notebooks/
-│   ├── 01_processamento.ipynb  # Carregamento e limpeza dos dados
-│   ├── 02_analise_espacial.ipynb # Análise com GeoPandas
-│   └── 03_visualizacao.ipynb   # Mapas interativos com Folium
+│   ├── 01_processamento.ipynb       # Carregamento e limpeza dos dados
+│   ├── 02_analise_espacial.ipynb    # Análise com GeoPandas
+│   ├── 03_visualizacao.ipynb        # Mapas interativos com Folium
+│   ├── 04_dados_reais_mapbiomas.ipynb # Análise MapBiomas Collection 10.1
+│   ├── 05_producao_ibge_sidra.ipynb # Produção agrícola PAM 2010–2023
+│   └── 06_analise_temporal.ipynb    # Análise temporal integrada (2000–2024)
 │
 ├── 📁 qgis_project/            # Arquivo .qgz do projeto QGIS
 │
@@ -121,10 +124,26 @@ jupyter notebook notebooks/
 
 ---
 
-### Mapa 3 — Expansão Agrícola 2000–2024
-> *Em desenvolvimento — análise temporal da fronteira agrícola*
+### Análise 3 — Produção Agrícola (IBGE SIDRA · 2010–2023)
+> Evolução da área plantada e produção de **soja** e **milho** em Sinop-MT ao longo de 14 anos. A soja cresceu **+112% em área** e **+128% em produção**. O milho expandiu **+278% em área** e **+341% em produção**. Dados: IBGE Produção Agrícola Municipal (PAM) · Tabela 5457.
 
-### Mapa 4 — Malha Viária e Pontos Logísticos
+![Área Plantada por Cultura](maps/exportados/09_area_plantada_culturas.png)
+
+*Fonte: IBGE SIDRA — PAM (Produção Agrícola Municipal) · Tabela 5457*
+
+---
+
+![Produção em Toneladas](maps/exportados/10_producao_toneladas.png)
+
+*Fonte: IBGE SIDRA — PAM · Tabela 5457*
+
+---
+
+![KPIs de Produção](maps/exportados/11_kpi_producao_sidra.png)
+
+---
+
+### Análise 4 — Malha Viária e Pontos Logísticos
 > *Em desenvolvimento*
 
 ---
@@ -136,8 +155,9 @@ jupyter notebook notebooks/
 - [x] Exportar mapa de limite municipal com basemap de satélite
 - [x] Classificar uso do solo com dados MapBiomas (Collection 10.1)
 - [x] Criar visualizações Python com Plotly (donut, barras, treemap, KPIs)
+- [x] Analisar produção agrícola histórica com dados IBGE SIDRA (PAM 2010–2023)
 - [ ] Criar layout de mapa profissional no QGIS (Print Composer)
-- [ ] Análise temporal da expansão agrícola 2000–2024
+- [x] Análise temporal da expansão agrícola 2000–2024
 - [ ] Integrar QGIS com Python via PyQGIS ou GeoPandas
 - [ ] Publicar mapa interativo online com Folium
 
