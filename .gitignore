@@ -1,41 +1,35 @@
-# QGIS
+# QGIS temp files
 *.qgs~
 *.qgz~
 *.qgd
 *.lock
 
-# Python
+# Python env and cache
 __pycache__/
-*.py[cod]
-*.pyo
+.ipynb_checkpoints/
 .env
 .venv/
-env/
 venv/
+env/
+*.pyc
+*.pyo
 *.egg-info/
 dist/
 build/
-.ipynb_checkpoints/
 
-# Dados pesados (rasters e shapefiles grandes - usar Git LFS ou ignorar)
+# Heavy geospatial data formats (rasters and large vector archives)
 *.tif
 *.tiff
-# Descomente abaixo se quiser ignorar shapefiles também:
-# *.shp
-# *.dbf
-# *.shx
-# *.prj
 
-# OS
+# OS temp files
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# IDEs
+# IDE settings
 .vscode/
 .idea/
 
 # Jupyter
 .jupyter/
 .antigravitycli/
-docs/

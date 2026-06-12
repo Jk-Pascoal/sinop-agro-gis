@@ -37,7 +37,7 @@
 #### 3️⃣ Produção Agrícola — IBGE/CONAB
 - **Localização:** `producao_agricola/`
 - **Formato:** CSV/Excel
-- **Fonte Recomendada:** https://sidra.ibge.gov.br/ (Tabela 1613)
+- **Fonte Recomendada:** https://sidra.ibge.gov.br/ (Tabela 5457 — Tabela 1613 como referência antiga)
 - **Produtos:** Soja, Milho, Algodão
 - **Anos:** 2000-2023
 - **Salve como:** `producao_ibge.csv`
