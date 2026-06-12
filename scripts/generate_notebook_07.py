@@ -68,8 +68,8 @@ txt_load = """## 1. Carregamento dos Shapefiles
 Carregamos o limite municipal de Sinop-MT (`sinop_recorte.shp`) e a malha viária recortada pelo nosso script de logística (`sinop_rodovias.shp`)."""
 
 # Célula 4 - Código (Carregamento)
-code_load = """limite_path = DATA_DIR / 'limite_municipal' / 'sinop_recorte.shp'
-rodovias_path = DATA_DIR / 'malha_viaria' / 'sinop_rodovias.shp'
+code_load = """limite_path = DATA_DIR / 'processed' / 'sinop_recorte.shp'
+rodovias_path = DATA_DIR / 'external' / 'malha_viaria' / 'sinop_rodovias.shp'
 
 gdf_limite = gpd.read_file(limite_path)
 gdf_rodovias = gpd.read_file(rodovias_path)

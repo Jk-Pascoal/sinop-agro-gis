@@ -29,23 +29,24 @@ DATA_DIR = ROOT / "data"
 
 # Criar estrutura de diretórios
 DIRS_TO_CREATE = [
-    DATA_DIR / "limite_municipal",
-    DATA_DIR / "uso_solo_mapbiomas",
-    DATA_DIR / "malha_viaria",
-    DATA_DIR / "producao_agricola",
+    DATA_DIR / "external" / "limite_municipal",
+    DATA_DIR / "raw" / "uso_solo_mapbiomas",
+    DATA_DIR / "external" / "malha_viaria",
+    DATA_DIR / "raw" / "producao_agricola",
+    DATA_DIR / "processed",
 ]
 
 DOWNLOADS = [
     {
         "name": "Limites Municipais — Mato Grosso (IBGE 2022)",
         "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2022/UFs/MT/MT_Municipios_2022.zip",
-        "target_dir": DATA_DIR / "limite_municipal",
+        "target_dir": DATA_DIR / "external" / "limite_municipal",
         "extract": True,
     },
     {
         "name": "Malha Viária — Centro-Oeste (OpenStreetMap via Geofabrik)",
         "url": "https://download.geofabrik.de/south-america/brazil/centro-oeste-latest-free.shp.zip",
-        "target_dir": DATA_DIR / "malha_viaria",
+        "target_dir": DATA_DIR / "external" / "malha_viaria",
         "extract": True,
     },
 ]

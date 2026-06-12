@@ -92,7 +92,7 @@ df_mb = pd.DataFrame({
 })
 
 # 2. Dados de Produção Agrícola (IBGE SIDRA 2010-2023)
-csv_ibge = DATA_DIR / 'producao_agricola' / 'producao_ibge.csv'
+csv_ibge = DATA_DIR / 'raw' / 'producao_agricola' / 'producao_ibge.csv'
 df_ibge = pd.read_csv(csv_ibge)
 
 # Calcular Produtividade (t/ha) para o IBGE

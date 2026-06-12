@@ -20,8 +20,8 @@ from shapely.geometry import Point, LineString
 # ── Caminhos ──────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
-LIMITE_DIR = DATA_DIR / "limite_municipal"
-MALHA_DIR = DATA_DIR / "malha_viaria"
+LIMITE_DIR = DATA_DIR / "processed"
+MALHA_DIR = DATA_DIR / "external" / "malha_viaria"
 MALHA_DIR.mkdir(parents=True, exist_ok=True)
 
 # Limite de Sinop
