@@ -97,6 +97,14 @@ footer .stack{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin
 footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px auto 0;font-family:'Newsreader';font-style:italic}
 .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
+/* Button group and buttons */
+.btn-group{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:600;text-decoration:none;transition:all .3s ease;cursor:pointer}
+.btn-primary{background:var(--soy);color:var(--bg);border:1px solid var(--soy)}
+.btn-primary:hover{background:var(--soy-bright);border-color:var(--soy-bright);transform:translateY(-2px);box-shadow:0 4px 12px rgba(192,132,252,0.3)}
+.btn-secondary{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.btn-secondary:hover{background:var(--panel2);border-color:var(--soy);color:var(--soy-bright);transform:translateY(-2px)}
+@media(max-width:560px){.btn-group{flex-direction:column;width:100%}.btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -105,7 +113,16 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
     <div class="eyebrow">Geospatial Data Science · Portfolio</div>
     <h1>Sinop <span class="alt">Agro-GIS</span></h1>
     <p class="sub">Análise espacial da fronteira agrícola de Sinop-MT: uso do solo, expansão da soja sobre a floresta amazônica e produção agropecuária.</p>
-    <div class="byline">por Jakson Pascoal · <a href="https://github.com/Jk-Pascoal/sinop-agro-gis" target="_blank" rel="noopener noreferrer">github.com/Jk-Pascoal/sinop-agro-gis</a> · <a href="mapa.html" target="_blank" style="color:var(--soy);text-decoration:none;font-weight:700">🗺️ Ver Mapa Interativo</a></div>
+    <div class="byline">por Jakson Pascoal · <a href="https://github.com/Jk-Pascoal/sinop-agro-gis" target="_blank" rel="noopener noreferrer">github.com/Jk-Pascoal/sinop-agro-gis</a></div>
+    <div class="btn-group">
+      <a href="https://github.com/Jk-Pascoal/sinop-agro-gis" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        Ver Código no GitHub
+      </a>
+      <a href="mapa.html" class="btn btn-primary" target="_blank">🗺️ Ver Mapa Interativo</a>
+      <a href="#metodologia" class="btn btn-secondary">⚙️ Ver Metodologia</a>
+      <a href="#proximas-fases" class="btn btn-secondary">🔮 Ver Próximas Fases</a>
+    </div>
     <div class="loc-badge">
       <b>Sinop · Mato Grosso</b>
       Cód. IBGE 5107909<br>3.990,3 km² · 399.086 ha<br>Bioma Amazônico
@@ -142,11 +159,33 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
 </div>
 </div>
 
+<!-- SECTION 00: VISÃO GERAL -->
+<section id="visao-geral">
+  <div class="wrap reveal">
+    <div class="sec-head"><span class="sec-num">00</span><h2>Visão Geral do Case</h2></div>
+    <p class="sec-desc">Entenda o contexto econômico e socioambiental que orienta a análise territorial e logística de Sinop-MT.</p>
+    <div class="grid-eq">
+      <div class="card">
+        <h3 style="color:var(--soy); margin-bottom:12px;">🎯 Problema de Negócio</h3>
+        <p style="font-size:0.95rem; color:var(--ink-soft); line-height:1.6;">
+          Como a expansão agrícola alterou o território de Sinop-MT entre 2000 e 2024, quais gargalos logísticos aparecem nesse processo e como dados geoespaciais podem apoiar decisões de produção, infraestrutura, sustentabilidade e planejamento territorial?
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--forest); margin-bottom:12px;">📝 Sumário Executivo</h3>
+        <p style="font-size:0.95rem; color:var(--ink-soft); line-height:1.6;">
+          Em 24 anos, Sinop-MT consolidou uma transição territorial marcada pela substituição de floresta por soja. Em 2024, a soja ocupa 42,6% do território municipal, enquanto a floresta remanescente representa 36,2%. A correlação de Pearson entre floresta e soja é de -0,984, indicando uma dinâmica quase espelhada entre retração florestal e expansão agrícola. A análise logística também revela 1.842 km de malha viária mapeada com o OpenStreetMap via Geofabrik, com forte dependência de estradas de terra, criando oportunidades para análises de rede, custo de escoamento e priorização de infraestrutura.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 1: USO DO SOLO 2024 -->
 <section>
   <div class="wrap reveal">
     <div class="sec-head"><span class="sec-num">01</span><h2>Uso do Solo em 2024</h2></div>
-    <p class="sec-desc">Os 399.086 hectares de Sinop, classificados pelo MapBiomas (Collection 10.1, resolução de 30m), revelam um território dominado pela agropecuária: <b>57,4% para produção</b> contra <b>36,2% de floresta</b> remanescente. A soja sozinha ocupa <b>42,6%</b> — mais de dois quintos do município.</p>
+    <p class="sec-desc">Os 399.086 hectares de Sinop-MT, classificados pelo MapBiomas Collection 10.1 (resolução de 30 m), revelam um território dominado pela agropecuária: <b>57,4% para produção</b> contra <b>36,2% de floresta</b> remanescente. A soja sozinha ocupa <b>42,6%</b> — mais de dois quintos do município.</p>
     <div class="grid2">
       <div class="card">
         <h3>Distribuição das classes de cobertura</h3>
@@ -168,11 +207,11 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
 <section>
   <div class="wrap reveal">
     <div class="sec-head"><span class="sec-num">02</span><h2>A Transição do Uso do Solo (2000–2024)</h2></div>
-    <p class="sec-desc">Em 24 anos, Sinop trocou floresta por soja em ritmo quase perfeitamente espelhado. A correlação de Pearson de <b>−0,9841</b> entre as duas curvas é uma das relações mais fortes observáveis em dados ambientais reais — a floresta perdeu 114.321 ha (−46,9%) enquanto a soja cresceu 137.852 ha (+430,8%), chegando a ocupar 5,3× a área de 2000.</p>
+    <p class="sec-desc">Em 24 anos, Sinop-MT trocou floresta por soja em ritmo quase perfeitamente espelhado. A correlação de Pearson de <b>−0,9841</b> entre as duas curvas é uma das relações mais fortes observáveis em dados ambientais reais — a floresta perdeu 114.321 ha (−46,9%) enquanto a soja cresceu 137.852 ha (+430,8%), chegando a ocupar 5,3× a área de 2000.</p>
     <div class="grid2">
       <div class="card">
         <h3>Floresta vs. Soja — área (ha)</h3>
-        <div class="ch-sub">MapBiomas · série 2000–2024</div>
+        <div class="ch-sub">MapBiomas Collection 10.1 · série 2000–2024</div>
         <div class="chart-box tall"><canvas id="chTemporal"></canvas></div>
       </div>
       <div class="card corr-card">
@@ -192,11 +231,11 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
 <section>
   <div class="wrap reveal">
     <div class="sec-head"><span class="sec-num">03</span><h2>Produção e Produtividade</h2></div>
-    <p class="sec-desc">Os dados do IBGE/SIDRA (PAM 2010–2023) mostram crescimento expressivo: a soja subiu <b>+112% em área</b> e <b>+128% em produção</b>; o milho, <b>+278%</b> e <b>+341%</b>. A produtividade da soja (~3,2 t/ha) supera a média mundial de 2,8 t/ha.</p>
+    <p class="sec-desc">Os dados do IBGE/SIDRA (2010–2023) mostram crescimento expressivo: a soja subiu <b>+112% em área</b> e <b>+128% em produção</b>; o milho, <b>+278%</b> e <b>+341%</b>. A produtividade da soja (~3,2 t/ha) supera a média mundial de 2,8 t/ha.</p>
     <div class="grid-eq">
       <div class="card">
         <h3>Área plantada — ha</h3>
-        <div class="ch-sub">Soja, Milho & Algodão · IBGE PAM · 2010–2023</div>
+        <div class="ch-sub">Soja, Milho & Algodão · IBGE/SIDRA · série 2010–2023</div>
         <div class="chart-box"><canvas id="chArea"></canvas></div>
       </div>
       <div class="card">
@@ -212,7 +251,7 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
 <section>
   <div class="wrap reveal">
     <div class="sec-head"><span class="sec-num">04</span><h2>O Enigma da Safrinha</h2></div>
-    <p class="sec-desc">Um paradoxo nos dados: o milho produz quase tanto quanto a soja, mas ocupando ~39% menos área no mapeamento. A explicação revela a engenharia agrícola de Sinop — o <b>duplo cultivo</b>.</p>
+    <p class="sec-desc">Um paradoxo nos dados: o milho produz quase tanto quanto a soja, mas ocupando ~39% menos área no mapeamento. A explicação revela a engenharia agrícola de Sinop-MT — o <b>duplo cultivo</b>.</p>
     <div class="grid2">
       <div class="card">
         <h3>Por que o milho "produz mais com menos terra"</h3>
@@ -225,7 +264,7 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
         </div>
         <div class="insight" style="margin-top:20px">
           <span class="ico">🔍</span>
-          <p><b>O milho safrinha cresce na MESMA terra da soja</b>, após a 1ª colheita. O MapBiomas classifica o pixel como "Soja" (1ª safra dominante), então a área do milho não aparece como terra adicional — por isso 68 mil ha de milho rendem quase tanto quanto a soja.</p>
+          <p><b>O milho safrinha cresce na MESMA terra da soja</b>, após a 1ª colheita. O MapBiomas Collection 10.1 classifica o pixel como "Soja" (1ª safra dominante), então a área do milho não aparece como terra adicional — por isso 68 mil ha de milho rendem quase tanto quanto a soja.</p>
         </div>
       </div>
       <div class="card">
@@ -241,7 +280,7 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
 <section>
   <div class="wrap reveal">
     <div class="sec-head"><span class="sec-num">05</span><h2>Infraestrutura de Escoamento</h2></div>
-    <p class="sec-desc">A malha viária recortada do OpenStreetMap revela a anatomia logística: <b>1.842,15 km</b> de vias, dois terços em estradas de terra que conectam fazendas ao eixo da <b>BR-163</b> (72,82 km de eixo simplificado, correspondendo a 81,21 km de feições OSM) — a artéria de escoamento aos portos do Norte.</p>
+    <p class="sec-desc">A malha viária recortada do OpenStreetMap via Geofabrik revela a anatomia logística em Sinop-MT: <b>1.842,15 km</b> de vias, dois terços em estradas de terra que conectam fazendas ao eixo da <b>BR-163</b> (63,9 km de eixo municipal, correspondendo a 81,21 km de feições OSM) — a artéria de escoamento aos portos do Norte.</p>
     <div class="grid2">
       <div class="card">
         <h3>Composição da malha viária</h3>
@@ -251,7 +290,7 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
       <div class="card" style="display:flex;flex-direction:column;justify-content:center">
         <h3 style="margin-bottom:18px">Métricas-chave</h3>
         <div class="tiles">
-          <div class="tile"><div class="t-val">72,8<span style="font-size:0.9rem">km</span></div><div class="t-lab">BR-163 no município (eixo)</div></div>
+          <div class="tile"><div class="t-val">63,9<span style="font-size:0.9rem">km</span></div><div class="t-lab">BR-163 no município (eixo)</div></div>
           <div class="tile"><div class="t-val">0,462</div><div class="t-lab">densidade km/km²</div></div>
           <div class="tile"><div class="t-val">6.394</div><div class="t-lab">segmentos de via</div></div>
         </div>
@@ -264,25 +303,215 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
   </div>
 </section>
 
-<!-- SECTION 6: MAPA INTERATIVO -->
-<section>
+<!-- SECTION 6: METODOLOGIA -->
+<section id="metodologia">
   <div class="wrap reveal">
-    <div class="sec-head"><span class="sec-num">06</span><h2>Visualização Espacial Interativa</h2></div>
-    <p class="sec-desc">Explore o território de Sinop-MT de forma dinâmica. Alterne entre as camadas de <b>Satélite (ESRI)</b> e <b>Dark Map</b>, visualize o limite municipal oficial e veja detalhes clicando no marcador de Sinop. <a href="mapa.html" target="_blank" style="color:var(--soy); text-decoration:none; font-weight:600; margin-left:8px;">[ 🗖 Abrir em tela cheia ]</a></p>
+    <div class="sec-head"><span class="sec-num">06</span><h2>Metodologia em 5 Passos</h2></div>
+    <p class="sec-desc">O pipeline analítico estruturado para garantir a integridade técnica e reprodutibilidade científica do projeto.</p>
+    
+    <style>
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        margin-top: 10px;
+      }
+      @media(max-width: 980px) {
+        .steps {
+          grid-template-columns: 1fr;
+        }
+      }
+      .step-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 20px;
+        position: relative;
+      }
+      .step-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--soy);
+        margin-bottom: 8px;
+      }
+      .step-card h4 {
+        font-family: 'Archivo', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+      .step-card p {
+        font-size: 0.8rem;
+        color: var(--ink-soft);
+        line-height: 1.5;
+      }
+    </style>
+    
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h4>Coleta e Filtro</h4>
+        <p>Importação do MapBiomas Collection 10.1, IBGE/SIDRA, IBGE Malha Municipal e OpenStreetMap via Geofabrik para o território de Sinop-MT.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h4>CRS Métrico</h4>
+        <p>Alinhamento espacial de todas as fontes cartográficas sob a projeção SIRGAS 2000 / UTM 21S (EPSG:31981) para cálculos exatos.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h4>Estatísticas</h4>
+        <p>Cálculo de área anual de cobertura (2000–2024) e análise de correlação de Pearson para quantificar a dinâmica ambiental.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h4>Integração</h4>
+        <p>Cruzamento de dados de produção do IBGE/SIDRA (2010–2023) com o comportamento físico do solo e a malha viária (BR-163 e vicinais).</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">05</div>
+        <h4>Web & Deploy</h4>
+        <p>Desenvolvimento dos gráficos interativos, mapas em Folium e publicação do dashboard corporativo no GitHub Pages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: MAPA INTERATIVO -->
+<section id="mapa-interativo">
+  <div class="wrap reveal">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Visualização Espacial Interativa</h2></div>
+    <p class="sec-desc">Explore o território de Sinop-MT de forma dinâmica. Alterne entre as camadas de <b>Satélite (ESRI)</b> e <b>Dark Map</b>, visualize o limite municipal oficial e veja detalhes clicando no marcador de Sinop-MT. <a href="mapa.html" target="_blank" style="color:var(--soy); text-decoration:none; font-weight:600; margin-left:8px;">[ 🗖 Abrir em tela cheia ]</a></p>
     <div class="card" style="padding:0; overflow:hidden; border-radius:14px; border:1px solid var(--line); background:var(--panel); height:550px;">
       <iframe src="mapa.html" style="width:100%; height:100%; border:none; display:block;" title="Mapa Interativo Sinop"></iframe>
     </div>
   </div>
 </section>
 
-<!-- ROADMAP -->
-<section>
+<!-- SECTION 8: DECISÕES, SKILLS E LIMITAÇÕES -->
+<section id="decisoes-skills">
   <div class="wrap reveal">
-    <div class="sec-head"><span class="sec-num">07</span><h2>Próximas Análises</h2></div>
-    <p class="sec-desc">O projeto sobe a escada do valor analítico: do descritivo (o que aconteceu) ao prescritivo (o que fazer).</p>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Decisões, Skills e Limitações</h2></div>
+    <p class="sec-desc">Informações técnicas adicionais sobre aplicabilidade estratégica, competências aplicadas e fronteiras metodológicas.</p>
+    
+    <style>
+      .dec-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.2fr;
+        gap: 24px;
+      }
+      @media(max-width: 980px) {
+        .dec-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .dec-col h3 {
+        font-family: 'Archivo', sans-serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dec-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .dec-list li {
+        font-size: 0.88rem;
+        color: var(--ink-soft);
+        position: relative;
+        padding-left: 18px;
+        line-height: 1.5;
+      }
+      .dec-list li::before {
+        content: "▪";
+        color: var(--soy);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+    
+    <div class="dec-grid">
+      <!-- DECISÕES QUE O PROJETO APOIA -->
+      <div class="dec-col">
+        <h3 style="color:var(--forest)"><span style="font-size:1.1rem">💡</span> Decisões de Apoio</h3>
+        <ul class="dec-list">
+          <li>Planejamento logístico de escoamento agrícola.</li>
+          <li>Priorização de infraestrutura viária municipal.</li>
+          <li>Monitoramento em tempo real de expansão agrícola.</li>
+          <li>Análise de pressão sobre áreas florestais remanescentes.</li>
+          <li>Avaliação de risco logístico em estradas de terra.</li>
+          <li>Planejamento territorial orientado por dados públicos.</li>
+          <li>Base histórica para modelos preditivos e prescritivos.</li>
+        </ul>
+      </div>
+      
+      <!-- SKILLS DEMONSTRADAS -->
+      <div class="dec-col">
+        <h3 style="color:var(--soy)"><span style="font-size:1.1rem">⚙️</span> Skills Demonstradas</h3>
+        <ul class="dec-list">
+          <li>Data Science aplicada a território real.</li>
+          <li>Análise exploratória de dados espaciais.</li>
+          <li>Geoprocessamento com ecossistema Python.</li>
+          <li>Manipulação geoespacial (GeoPandas e Shapely).</li>
+          <li>Visualização de dados (Plotly, Matplotlib e Folium).</li>
+          <li>Estatística aplicada com correlação temporal.</li>
+          <li>Engenharia de dados públicos (IBGE/SIDRA).</li>
+          <li>Sistemas de Informação Geográfica (GIS/QGIS).</li>
+          <li>Storytelling analítico voltado a portfólio.</li>
+          <li>Metodologias de Deploy em GitHub Pages.</li>
+        </ul>
+      </div>
+      
+      <!-- LIMITAÇÕES -->
+      <div class="dec-col">
+        <h3 style="color:var(--danger)"><span style="font-size:1.1rem">⚠️</span> Limitações do Case</h3>
+        <ul class="dec-list">
+          <li>A correlação linear de Pearson de -0,984 indica substituição espacial, mas correlação não implica causalidade isolada.</li>
+          <li>A resolução espacial de 30 m do MapBiomas Collection 10.1 pode suavizar feições muito delgadas no território.</li>
+          <li>A classe dominante do pixel de 30m oculta usos secundários rápidos, como o cultivo da safrinha de milho.</li>
+          <li>A malha viária do OpenStreetMap via Geofabrik pode apresentar pequenas incompletudes ou defasagens em áreas rurais.</li>
+          <li>A base de dados de produção agrícola depende da periodicidade de divulgação das pesquisas do IBGE/SIDRA.</li>
+          <li>O projeto tem fins demonstrativos e não substitui estudos de licenciamento ambiental ou planejamento territorial governamental.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09: PRÓXIMAS FASES -->
+<section id="proximas-fases">
+  <div class="wrap reveal">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Próximas Fases</h2></div>
+    <p class="sec-desc">O projeto foi desenhado sob uma perspectiva de evolução contínua, visando elevar o valor analítico da análise descritiva para a preditiva e prescritiva.</p>
     <div class="grid-eq">
-      <div class="card"><h3 style="color:var(--road)">Fase 8 · Rede Logística</h3><p style="font-size:0.92rem;color:var(--ink-soft);margin-top:8px">Análise de rede (networkx) para rotas ótimas de escoamento pela BR-163 e mapa de fricção logística por zona produtiva.</p></div>
-      <div class="card"><h3 style="color:var(--soy)">Fase 9 · Modelo Preditivo</h3><p style="font-size:0.92rem;color:var(--ink-soft);margin-top:8px">Projeção de soja e perda florestal até 2030 com intervalos de confiança e limitações declaradas.</p></div>
+      <div class="card">
+        <h3 style="color:var(--road); margin-bottom:12px;">🚚 Fase 8 — Rede Logística (Network Analysis)</h3>
+        <ul class="dec-list" style="margin-top:10px;">
+          <li>Modelagem da malha rodoviária municipal como grafo viário usando <b>NetworkX</b>.</li>
+          <li>Cálculo computacional de rotas ótimas das fazendas até silos e ao eixo da <b>BR-163</b>.</li>
+          <li>Desenvolvimento de mapa de atrito/fricção logística para estimativa de tempos de frete.</li>
+          <li>Identificação espacial de zonas agrícolas severamente dependentes de estradas de terra.</li>
+          <li>Geração do Índice de Vulnerabilidade Logística para apoiar investimentos em infraestrutura.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--soy); margin-bottom:12px;">🔮 Fase 9 — Modelo Preditivo (Land Use Forecast)</h3>
+        <ul class="dec-list" style="margin-top:10px;">
+          <li>Projeção estatística e espacial da expansão da área de soja até o ano de 2030.</li>
+          <li>Simulação da perda de cobertura de floresta nativa amazônica remanescente até 2030.</li>
+          <li>Cálculo de intervalos de confiança empíricos para mitigação de ruídos de modelagem.</li>
+          <li>Declaração transparente de restrições do modelo estatístico aplicado.</li>
+          <li>Comparação regional de três cenários: Conservador (moratória rígida), Tendência e Acelerado.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -292,10 +521,10 @@ footer .note{font-size:0.84rem;color:var(--ink-dim);max-width:580px;margin:20px 
   <div class="stack">
     <span class="tech">Python 3.12</span><span class="tech">GeoPandas</span><span class="tech">Shapely</span>
     <span class="tech">pandas</span><span class="tech">Plotly</span><span class="tech">Folium</span>
-    <span class="tech">Matplotlib</span><span class="tech">QGIS</span><span class="tech">MapBiomas 10.1</span>
-    <span class="tech">IBGE/SIDRA</span><span class="tech">OSM/Geofabrik</span><span class="tech">GitHub Pages</span>
+    <span class="tech">Matplotlib</span><span class="tech">QGIS</span><span class="tech">MapBiomas Collection 10.1</span>
+    <span class="tech">IBGE/SIDRA</span><span class="tech">OpenStreetMap via Geofabrik</span><span class="tech">GitHub Pages</span>
   </div>
-  <p class="note">Dados: MapBiomas Collection 10.1, IBGE Produção Agrícola Municipal (Tabela 5457), IBGE Malha Municipal 2022, OpenStreetMap via Geofabrik. CRS: SIRGAS 2000 / UTM 21S (EPSG:31981). Projeto de portfólio por Jakson Pascoal.</p>
+  <p class="note">Dados: MapBiomas Collection 10.1, IBGE/SIDRA (Tabela 5457), IBGE Malha Municipal 2022, OpenStreetMap via Geofabrik. CRS: SIRGAS 2000 / UTM 21S (EPSG:31981). Projeto de portfólio por Jakson Pascoal.</p>
 </footer>
 
 <script>
