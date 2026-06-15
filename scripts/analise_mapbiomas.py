@@ -17,7 +17,7 @@ from collections import Counter
 # ─────────────────────────────────────────────────────────────────────────────
 
 ROOT = Path.cwd().parent if Path.cwd().name == 'scripts' else Path.cwd()
-RASTER_FILE = ROOT / "data" / "uso_solo_mapbiomas" / "MapBiomas_Sinop_2023.tif"
+RASTER_FILE = ROOT / "data" / "raw" / "uso_solo_mapbiomas" / "MapBiomas_Sinop_2023.tif"
 
 # Mapeamento de códigos MapBiomas para nomes legíveis
 MAPBIOMAS_CLASSES = {
@@ -107,7 +107,7 @@ def analisar_raster(caminho_raster):
         df = pd.DataFrame(dados_classe)
         
         # Salvar como CSV
-        output_csv = ROOT / "data" / "uso_solo_mapbiomas" / "estatisticas_sinop_2023.csv"
+        output_csv = ROOT / "data" / "processed" / "estatisticas_sinop_2023.csv"
         df.to_csv(output_csv, index=False)
         print(f"\n✅ Estatísticas salvas: {output_csv.name}")
         
@@ -140,5 +140,5 @@ if __name__ == "__main__":
     print("=" * 70)
     
     if df_stats is not None:
-        print(f"\n💾 Dados salvos em: data/uso_solo_mapbiomas/estatisticas_sinop_2023.csv")
+        print(f"\n💾 Dados salvos em: data/processed/estatisticas_sinop_2023.csv")
         print(f"\n📊 Use o notebook 01_processamento.ipynb para visualizações!")

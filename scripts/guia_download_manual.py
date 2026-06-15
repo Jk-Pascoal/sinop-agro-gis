@@ -21,7 +21,7 @@ DATASETS_MANUAL = {
                     "2. Selecione 'Baixar por município'",
                     "3. Estado: MT, Município: Sinop",
                     "4. Anos: 2000, 2010, 2020, 2023",
-                    "5. Extraia em: data/uso_solo_mapbiomas/",
+                    "5. Extraia em: data/raw/uso_solo_mapbiomas/",
                 ]
             },
             {
@@ -32,7 +32,7 @@ DATASETS_MANUAL = {
                     "2. Acesse: https://bit.ly/mapbiomas-toolkit",
                     "3. Selecione MT, Sinop, anos 2000-2023",
                     "4. Clique 'Export'",
-                    "5. Extraia em: data/uso_solo_mapbiomas/",
+                    "5. Extraia em: data/raw/uso_solo_mapbiomas/",
                 ]
             }
         ]
@@ -45,14 +45,14 @@ DATASETS_MANUAL = {
                 "url": "https://sidra.ibge.gov.br/",
                 "passos": [
                     "1. Acesse https://sidra.ibge.gov.br/",
-                    "2. Busque tabela 1613 (Produção Agrícola Municipal)",
+                    "2. Busque tabela 5457 (Produção Agrícola Municipal - antiga tabela 1613)",
                     "3. Filtros:",
                     "   - Variável: Produção (t), Área (ha)",
                     "   - Município: Sinop/MT",
                     "   - Produto: Soja, Milho, Algodão",
                     "   - Anos: 2000-2023",
                     "4. Exporte como CSV",
-                    "5. Salve em: data/producao_agricola/producao_ibge.csv",
+                    "5. Salve em: data/raw/producao_agricola/producao_ibge.csv",
                 ]
             },
             {
@@ -63,7 +63,7 @@ DATASETS_MANUAL = {
                     "2. Seção: 'Safras e Conjuntura'",
                     "3. Busque dados históricos de Sinop/MT",
                     "4. Exporte como CSV ou Excel",
-                    "5. Salve em: data/producao_agricola/",
+                    "5. Salve em: data/raw/producao_agricola/",
                 ]
             }
         ]
@@ -78,7 +78,7 @@ DATASETS_MANUAL = {
                     "1. Acesse o site DNIT-GEO",
                     "2. Seção: Shapefiles / Download",
                     "3. Selecione: Malha Viária Federal",
-                    "4. Baixe para: data/malha_viaria/",
+                    "4. Baixe para: data/external/malha_viaria/",
                 ]
             },
             {
@@ -88,7 +88,7 @@ DATASETS_MANUAL = {
                     "1. Use Overpass Turbo: https://overpass-turbo.eu/",
                     "2. Template: 'Way highway' para MT",
                     "3. Ou use QGIS Plugin: 'QuickOSM'",
-                    "4. Salve em: data/malha_viaria/",
+                    "4. Salve em: data/external/malha_viaria/",
                 ]
             }
         ]

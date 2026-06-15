@@ -19,8 +19,8 @@ import pandas as pd
 # ── Caminhos ──────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
-LIMITE_DIR = DATA_DIR / "limite_municipal"
-MALHA_DIR = DATA_DIR / "malha_viaria"
+LIMITE_DIR = DATA_DIR / "processed"
+MALHA_DIR = DATA_DIR / "external" / "malha_viaria"
 
 # Arquivos de Entrada (OSM Geofabrik)
 ROADS_SHP = MALHA_DIR / "gis_osm_roads_free_1.shp"
@@ -141,7 +141,7 @@ def main():
     print("=" * 70)
     print("📍 Próximos passos:")
     print("  1. Abra o QGIS: Projeto-SINOP.qgz")
-    print("  2. Adicione as novas camadas geradas em: data/malha_viaria/")
+    print("  2. Adicione as novas camadas geradas em: data/external/malha_viaria/")
     print("     - sinop_rodovias.shp")
     print("     - sinop_ferrovias.shp")
     print("     - sinop_silos.shp")

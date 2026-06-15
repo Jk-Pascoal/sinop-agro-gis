@@ -1,195 +1,188 @@
-# 🌱 Sinop Agro-GIS — Análise Espacial da Expansão Agrícola em Mato Grosso
+# 🌱 Sinop Agro-GIS
 
-[![QGIS](https://img.shields.io/badge/QGIS-3.x-589632?style=for-the-badge&logo=qgis&logoColor=white)](https://qgis.org/)
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org/)
-[![GeoPandas](https://img.shields.io/badge/GeoPandas-GIS-139C5A?style=for-the-badge)](https://geopandas.org/)
-[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-orange?style=for-the-badge)]()
-
-> **Estudo de caso geoespacial** sobre a expansão agrícola, uso do solo e infraestrutura logística na mesorregião Norte de Mato Grosso, com foco no município de **Sinop-MT** — polo do agronegócio brasileiro.
+## 📊 Ficha Técnica do Projeto
+* **Município:** Sinop-MT (Código IBGE: 5107909)
+* **Área Territorial:** 3.990,3 km² / 399.086 ha
+* **Série Analisada (Uso do Solo):** 2000–2024
+* **Produção Agrícola:** IBGE/SIDRA PAM 2010–2023
+* **Fonte do Uso do Solo:** MapBiomas Collection 10.1 (Resolução: 30 m)
+* **Projeção Cartográfica:** SIRGAS 2000 / UTM 21S (EPSG:31981)
+* **Stack Principal:** Python 3.12, pandas, GeoPandas, Shapely, Plotly, Folium, Matplotlib, QGIS, MapBiomas Collection 10.1, IBGE/SIDRA, OpenStreetMap via Geofabrik, GitHub Pages
+* **Status do Projeto:** Fases 1–7 concluídas; Fase 8 e Fase 9 planejadas.
 
 ---
 
-## 📌 Sobre o Projeto
+## 🎯 Problema de Negócio
+Como a expansão agrícola alterou o território de Sinop-MT entre 2000 e 2024, quais gargalos logísticos aparecem nesse processo e como dados geoespaciais podem apoiar decisões de produção, infraestrutura, sustentabilidade e planejamento territorial?
 
-Sinop é o principal centro econômico do Norte de Mato Grosso e um dos municípios com maior produção de soja e milho do Brasil. Este projeto combina ferramentas de **GIS (QGIS)** e **análise de dados em Python** para mapear e analisar:
+---
 
-- 🌾 Evolução do uso do solo agrícola (2000–2023)
-- 🌲 Desmatamento x avanço da fronteira agrícola
-- 🛣️ Infraestrutura logística: rodovias, ferrovias e silos
-- 📊 Produção agrícola por safra (dados IBGE/CONAB)
+## 📝 Sumário Executivo
+Em 24 anos, Sinop-MT consolidou uma transição territorial marcada pela substituição de floresta por soja. Em 2024, a soja ocupa 42,6% do território municipal, enquanto a floresta remanescente representa 36,2%. A correlação de Pearson entre floresta e soja é de -0,984, indicando uma dinâmica quase espelhada entre retração florestal e expansão agrícola. A análise logística também revela 1.842 km de malha viária mapeada, com forte dependência de estradas de terra, criando oportunidades para análises de rede, custo de escoamento e priorização de infraestrutura.
+
+---
+
+## 🏆 Principais Insights
+* **Soja no território em 2024:** 42,6% (169.852 ha).
+* **Floresta remanescente em 2024:** 36,2% (129.179 ha).
+* **Correlação floresta × soja:** -0,984 (relação espelhada).
+* **Floresta perdeu 114.321 ha** entre 2000 e 2024.
+* **Soja cresceu 137.852 ha** entre 2000 e 2024.
+* **Malha viária mapeada:** 1.842 km.
+* **6.394 segmentos de via** identificados.
+* **63,9 km da BR-163** dentro do município.
+* **66,7% das vias** são estradas de terra.
+* O milho safrinha cresce na mesma terra da soja após a primeira colheita, explicando a aparente diferença entre área mapeada e produção.
+
+---
+
+## ⚙️ Metodologia
+A análise foi executada de acordo com as seguintes etapas estruturadas:
+1. **Coleta dos dados públicos:**
+   * MapBiomas Collection 10.1.
+   * IBGE/SIDRA PAM.
+   * IBGE Malha Municipal.
+   * OpenStreetMap via Geofabrik.
+2. **Recorte espacial:**
+   * Limite municipal de Sinop-MT.
+   * CRS SIRGAS 2000 / UTM 21S (EPSG:31981).
+3. **Tratamento e classificação:**
+   * Agrupamento das classes de uso do solo.
+   * Cálculo de área por classe.
+   * Série temporal 2000–2024.
+4. **Análise estatística:**
+   * Evolução floresta × soja.
+   * Correlação de Pearson.
+   * Proporção soja/floresta.
+5. **Integração agroprodutiva:**
+   * Área plantada.
+   * Produção.
+   * Produtividade.
+   * Interpretação da safrinha.
+6. **Análise logística:**
+   * Malha viária.
+   * Densidade de vias.
+   * BR-163.
+   * Segmentos e classificação das estradas.
+7. **Visualização:**
+   * Gráficos interativos (Plotly).
+   * Mapa interativo (Folium).
+   * Dashboard web publicado no GitHub Pages.
+
+---
+
+## 💡 Decisões que este projeto pode apoiar
+* Planejamento logístico de escoamento agrícola.
+* Priorização de infraestrutura viária.
+* Monitoramento de expansão agrícola.
+* Análise de pressão sobre áreas florestais remanescentes.
+* Avaliação de risco logístico em estradas de terra.
+* Planejamento territorial orientado por dados.
+* Construção futura de modelos preditivos e prescritivos.
+
+---
+
+## 🛠️ Skills demonstradas
+* Data Science aplicada a território real.
+* Análise exploratória de dados.
+* Geoprocessamento com Python.
+* Manipulação de dados geoespaciais com GeoPandas e Shapely.
+* Visualização de dados com Plotly, Matplotlib e Folium.
+* Estatística aplicada com correlação temporal.
+* Análise de dados públicos.
+* GIS aplicado ao agronegócio.
+* Storytelling analítico.
+* Deploy de projeto em GitHub Pages.
+* Pensamento de produto analítico.
+
+---
+
+## ⚠️ Limitações
+* **Correlação não implica causalidade:** A correlação negativa de Pearson entre soja e floresta descreve a dinâmica de substituição de cobertura, mas a causalidade depende de fatores históricos e socioeconômicos.
+* **Resolução espacial:** A resolução de 30 m do MapBiomas Collection 10.1 pode suavizar pequenas feições territoriais.
+* **Classificação de pixels dominantes:** A classe dominante de uso em cada pixel de 30 m pode ocultar usos secundários, como no caso da safrinha (onde a soja é classificada como cultura primária anual).
+* **Completude viária:** A malha viária do OpenStreetMap via Geofabrik depende de mapeamento comunitário e pode apresentar incompletudes regionais.
+* **Fontes externas:** Os dados de produção agrícola dependem da disponibilidade e atualização do IBGE/SIDRA.
+* **Escopo do projeto:** O projeto é uma análise de portfólio e não substitui estudos técnicos oficiais de licenciamento, fiscalização ou planejamento governamental.
+
+---
+
+## 🔮 Próximas Fases
+* **Fase 8 — Rede Logística:**
+  * Criar grafo viário com NetworkX.
+  * Calcular rotas ótimas até a BR-163.
+  * Criar mapa de fricção logística.
+  * Identificar zonas produtivas mais dependentes de estradas de terra.
+  * Criar índice de vulnerabilidade logística.
+* **Fase 9 — Modelo Preditivo:**
+  * Projetar expansão da soja até 2030.
+  * Projetar perda florestal até 2030.
+  * Usar intervalos de confiança.
+  * Declarar limitações do modelo.
+  * Comparar cenários conservador, tendência e acelerado.
 
 ---
 
 ## 🗂️ Estrutura do Repositório
-
 ```
 sinop-agro-gis/
-│
-├── 📁 data/
-│   ├── limite_municipal/       # Shapefiles IBGE — limites de Sinop e MT
-│   ├── uso_solo_mapbiomas/     # Rasters MapBiomas — uso e cobertura do solo
-│   ├── malha_viaria/           # Shapefiles DNIT/OSM — rodovias e ferrovias
-│   └── producao_agricola/      # CSVs IBGE/CONAB — produção por safra
-│
-├── 📁 maps/
-│   └── exportados/             # Mapas exportados do QGIS (PNG/PDF)
-│
-├── index.html                  # Página do mapa interativo (GitHub Pages)
-│
-├── 📁 notebooks/
-│   ├── 01_processamento.ipynb       # Carregamento e limpeza dos dados
-│   ├── 02_analise_espacial.ipynb    # Análise com GeoPandas
-│   ├── 03_visualizacao.ipynb        # Mapas interativos com Folium
-│   ├── 04_dados_reais_mapbiomas.ipynb # Análise MapBiomas Collection 10.1
-│   ├── 05_producao_ibge_sidra.ipynb # Produção agrícola PAM 2010–2023
-│   ├── 06_analise_temporal.ipynb    # Análise temporal integrada (2000–2024)
-│   └── 07_logistica_infraestrutura.ipynb # Análise da malha viária e logística
-│
-├── 📁 qgis_project/            # Arquivo .qgz do projeto QGIS
-│
-├── 📁 assets/                  # Imagens e recursos para documentação
-│
-├── README.md
-└── requirements.txt
+├── assets/                 # Imagens e recursos visuais para documentação
+├── data/                   # Armazenamento estruturado de dados
+│   ├── raw/                # Arquivos brutos (MapBiomas rasters, planilhas IBGE)
+│   ├── processed/          # Arquivos processados (recortes consolidados, tabelas finais)
+│   └── external/           # Dados de referência geográfica (shapes de limites e malhas viárias)
+├── docs/                   # Documentação detalhada do projeto
+│   ├── methodology.md      # Metodologia de análise e workflow de dados
+│   ├── data_dictionary.md  # Dicionário de variáveis e campos estruturados
+│   ├── reproducibility.md  # Instruções para ambiente virtual e execução de notebooks
+│   └── limitations.md      # Limitações técnicas e inconsistências metodológicas
+├── maps/
+│   └── exportados/         # Mapas cartográficos e gráficos de alta resolução (PNG)
+├── notebooks/              # Jupyter Notebooks ordenados de processamento a modelagem
+├── qgis_project/
+│   └── Projeto-SINOP.qgz   # Arquivo de projeto integrado do QGIS
+├── scripts/                # Scripts Python utilitários para automação e extração
+├── index.html              # Dashboard dinâmico em Vanilla JS e Chart.js
+├── requirements.txt        # Dependências de bibliotecas de análise e GIS
+└── .gitignore              # Configurações de versionamento Git
 ```
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-| Ferramenta | Uso |
-|---|---|
-| **QGIS 3.x** | Processamento geoespacial, criação de layouts de mapas |
-| **Python 3.10+** | Scripts de análise e automação |
-| **GeoPandas** | Manipulação de dados vetoriais e rasters |
-| **Shapely** | Operações geométricas espaciais |
-| **Folium** | Mapas interativos no browser |
-| **Plotly** | Visualizações e dashboards |
-| **Rasterio** | Processamento de imagens raster (MapBiomas) |
-
----
-
-## 📦 Fontes de Dados
-
-Todos os dados utilizados são **públicos e gratuitos**:
-
-| Dataset | Fonte | Link |
-|---|---|---|
-| Limites Municipais | IBGE | [Malha Municipal](https://www.ibge.gov.br/geociencias/downloads-geociencias.html) |
-| Uso e Cobertura do Solo | MapBiomas | [mapbiomas.org](https://mapbiomas.org/) |
-| Malha Viária Federal | DNIT | [dnit.gov.br](https://www.gov.br/dnit/pt-br/assuntos/planejamento-e-pesquisa/dnit-geo) |
-| Produção Agrícola Municipal | IBGE/SIDRA | [sidra.ibge.gov.br](https://sidra.ibge.gov.br/) |
-| Imagens de Satélite | Copernicus/Sentinel | [Copernicus Browser](https://browser.dataspace.copernicus.eu/) |
 
 ---
 
 ## 🚀 Como Executar
 
-### 1. Clone o repositório
-```bash
-git clone https://github.com/Jk-Pascoal/sinop-agro-gis.git
-cd sinop-agro-gis
-```
-
-### 2. Instale as dependências Python
-```bash
+### 1. Preparar o Ambiente
+Crie um ambiente virtual e instale as dependências:
+```powershell
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 3. Abra o projeto no QGIS
-- Abra o QGIS
-- Vá em `Projeto > Abrir` e selecione `qgis_project/Projeto-SINOP.qgz`
+### 2. Recuperar ou Baixar os Dados
+Para recuperar as malhas viárias e limites geográficos automáticos:
+```powershell
+python scripts/download_dados.py
+```
+*Consulte o guia interativo [scripts/guia_download_manual.py](file:///C:/Users/Administrador/Documents/Projeto-SINOP/scripts/guia_download_manual.py) para o download das tabelas de dados agrícolas e rasters do MapBiomas Collection 10.1.*
 
-### 4. Execute os notebooks
-```bash
+### 3. Rodar as Análises
+Abra o Jupyter e execute os notebooks na ordem numérica:
+```powershell
 jupyter notebook notebooks/
 ```
 
----
-
-## 📊 Análises e Resultados
-
-### Mapa 1 — Limite Municipal de Sinop-MT
-> Fronteira municipal sobre imagem de satélite de alta resolução (ESRI World Imagery). É possível observar nitidamente o contraste entre os fragmentos de **floresta nativa** (verde escuro) e os **talhões agrícolas** (bege) que dominam a paisagem do município.
-
-![Limite Municipal de Sinop-MT](maps/exportados/01_sinop_limite_municipal.png)
-
-*Fonte: IBGE — Malha Municipal 2022 | Imagem: ESRI World Imagery*
-
----
-
-### Mapa 2 — Uso do Solo por Classe (MapBiomas 2024)
-> Distribuição completa das 13 classes de uso e cobertura do solo no município de Sinop-MT. A **soja** domina com 169.851 ha (42,6%), seguida pela **Floresta Nativa** com 129.179 ha (32,4%). Dados: MapBiomas Collection 10.1, resolução 30m.
-
-![Uso do Solo — Barras por Classe](maps/exportados/03_uso_solo_barras_sinop.png)
-
-*Fonte: MapBiomas Collection 10.1 · IBGE Malha Municipal 2022*
-
----
-
-### Análise 3 — Produção Agrícola (IBGE SIDRA · 2010–2023)
-> Evolução da área plantada e produção de **soja** e **milho** em Sinop-MT ao longo de 14 anos. A soja cresceu **+112% em área** e **+128% em produção**. O milho expandiu **+278% em área** e **+341% em produção**. Dados: IBGE Produção Agrícola Municipal (PAM) · Tabela 5457.
-
-![Área Plantada por Cultura](maps/exportados/09_area_plantada_culturas.png)
-
-*Fonte: IBGE SIDRA — PAM (Produção Agrícola Municipal) · Tabela 5457*
-
----
-
-![Produção em Toneladas](maps/exportados/10_producao_toneladas.png)
-
-*Fonte: IBGE SIDRA — PAM · Tabela 5457*
-
----
-
-![KPIs de Produção](maps/exportados/11_kpi_producao_sidra.png)
-
----
-
-### Análise 4 — Malha Viária e Pontos Logísticos
-> Mapeamento espacial completo da malha rodoviária municipal de Sinop-MT, destacando o fluxo de escoamento e as principais vias de conexão agrícola.
-
-- **Área Municipal:** 3.990,86 km² (399.085 ha)
-- **Extensão Total da Malha Viária:** **1.842,15 km** de estradas
-- **Densidade Viária:** **0,462 km/km²** (km de vias por km² de área)
-- **Eixo Principal (BR-163):** **63,85 km** de extensão cruzando o município de sul a norte.
-- **Distribuição de Vias por Classe (OSM fclass):**
-  - *Estradas Rurais / Vias de Terra (Track):* **1.228,15 km (66,7%)** — essenciais para o transporte interno das lavouras até a rodovia.
-  - *Vias Urbanas Residenciais (Residential):* **348,65 km (18,9%)**
-  - *Vias de Conexão Estaduais e Locais (Secondary/Tertiary):* **85,50 km (4,6%)**
-  - *Rodovia Federal de Escoamento (Trunk/Primary):* **72,82 km (4,0%)** (BR-163)
-
-![Malha Viária de Sinop-MT](maps/exportados/15_malha_viaria_sinop.png)
-
----
-
-## 🎯 Objetivos de Aprendizado
-
-- [x] Configurar projeto QGIS com sistema de coordenadas SIRGAS 2000
-- [x] Importar shapefiles do IBGE (MT_Municipios_2022)
-- [x] Exportar mapa de limite municipal com basemap de satélite
-- [x] Classificar uso do solo com dados MapBiomas (Collection 10.1)
-- [x] Criar visualizações Python com Plotly (donut, barras, treemap, KPIs)
-- [x] Analisar produção agrícola histórica com dados IBGE SIDRA (PAM 2010–2023)
-- [ ] Criar layout de mapa profissional no QGIS (Print Composer)
-- [x] Análise temporal da expansão agrícola 2000–2024
-- [x] Integrar QGIS com Python via PyQGIS ou GeoPandas
-- [x] Publicar mapa interativo online com Folium
+### 4. Abrir no QGIS
+Inicie o QGIS e carregue o arquivo de projeto [qgis_project/Projeto-SINOP.qgz](file:///C:/Users/Administrador/Documents/Projeto-SINOP/qgis_project/Projeto-SINOP.qgz).
 
 ---
 
 ## 👤 Autor
-
 **Jakson Pascoal**
-- GitHub: [@Jk-Pascoal](https://github.com/Jk-Pascoal)
-- Localização: Sinop, Mato Grosso — Brasil 🌱
+* GitHub: [@Jk-Pascoal](https://github.com/Jk-Pascoal)
+* Localização: Sinop-MT, Brasil 🇧🇷
 
 ---
 
 ## 📄 Licença
-
-Este projeto está sob a licença MIT. Os dados utilizados estão sujeitos às licenças de suas respectivas fontes.
-
----
-
-*Projeto desenvolvido como parte do portfólio de Ciência de Dados e Análise Geoespacial.*
+Este projeto é disponibilizado sob a licença **MIT**. Os dados utilizados estão vinculados às restrições e termos de uso de suas respectivas instituições fornecedoras (IBGE/SIDRA, MapBiomas Collection 10.1, OpenStreetMap via Geofabrik).
